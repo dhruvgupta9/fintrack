@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ── Theme Variables ───────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-main:           #0d1117;
+  --bg-sidebar:        #080c14;
+  --bg-card:           rgba(255, 255, 255, 0.04);
+  --bg-card-hover:     rgba(79, 110, 247, 0.08);
+  --bg-card-solid:     #111827;
+  --border-color:      rgba(255, 255, 255, 0.07);
+
+  /* Text */
+  --text-primary:      #f0f0f0;
+  --text-secondary:    rgba(255, 255, 255, 0.45);
+  --text-muted:        rgba(255, 255, 255, 0.2);
+
+  /* Accent */
+  --accent:            #4f6ef7;
+  --accent-hover:      #3a57d4;
+  --glow-color:        rgba(79, 110, 247, 0.18);
+
+  /* Topbar */
+  --topbar-bg:         rgba(13, 17, 23, 0.85);
+
+  /* Card text */
+  --card-text:         #f0f0f0;
+  --card-sub:          rgba(255,255,255,0.5);
+
+  /* Semantic */
+  --green:             #22c55e;
+  --red:               #ef4444;
+  --divider:           rgba(255,255,255,0.07);
+  --shimmer:           rgba(255,255,255,0.04);
+
+  /* Nav */
+  --nav-hover-bg:      rgba(255, 255, 255, 0.05);
+  --nav-hover-border:  rgba(255, 255, 255, 0.08);
+  --nav-hover-color:   rgba(255, 255, 255, 0.75);
+  --online-border:     #080c14;
+
+  /* Dashboard – grid / orbs */
+  --grid-line:         rgba(59,130,246,0.04);
+  --orb-blue:          rgba(59,130,246,0.10);
+  --orb-purple:        rgba(168,85,247,0.08);
+  --orb-pink:          rgba(236,72,153,0.06);
+
+  /* Dashboard – stat cards */
+  --stat-green-bg:     rgba(74,222,128,0.08);
+  --stat-green-border: rgba(74,222,128,0.20);
+  --stat-amber-bg:     rgba(245,158,11,0.08);
+  --stat-amber-border: rgba(245,158,11,0.20);
+  --stat-gray-bg:      rgba(148,163,184,0.06);
+  --stat-gray-border:  rgba(148,163,184,0.15);
+
+  /* Dashboard – panels */
+  --panel-bg:          linear-gradient(145deg, #0d1729 0%, #0a1220 100%);
+  --panel-border:      #1e2d45;
+  --panel-border-hover:#2d3f5e;
+  --panel-shadow:      0 4px 40px rgba(0,0,0,0.4);
+
+  /* Dashboard – category rows */
+  --cat-row-bg:        rgba(8,13,24,0.7);
+  --cat-row-hover:     rgba(15,22,40,0.9);
+  --cat-row-border:    #1a2540;
+
+  /* Dashboard – bar track */
+  --bar-track:         #1a2540;
+
+  /* Dashboard – badges */
+  --badge-red-bg:      rgba(251,113,133,0.12);
+  --badge-red-border:  rgba(251,113,133,0.25);
+
+  /* Dashboard – tag chip */
+  --tag-bg:            #1e293b;
+}
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-main:           #f0f4ff;
+  --bg-sidebar:        #ffffff;
+  --bg-card:           rgba(0, 0, 0, 0.03);
+  --bg-card-hover:     rgba(79, 110, 247, 0.07);
+  --bg-card-solid:     #ffffff;
+  --border-color:      rgba(0, 0, 0, 0.08);
+
+  /* Text */
+  --text-primary:      #0f172a;
+  --text-secondary:    rgba(0, 0, 0, 0.50);
+  --text-muted:        rgba(0, 0, 0, 0.35);
+
+  /* Accent */
+  --accent:            #4f6ef7;
+  --accent-hover:      #3a57d4;
+  --glow-color:        rgba(79, 110, 247, 0.1);
+
+  /* Topbar */
+  --topbar-bg:         rgba(240, 244, 255, 0.9);
+
+  /* Card text */
+  --card-text:         #0f172a;
+  --card-sub:          rgba(0,0,0,0.45);
+
+  /* Semantic */
+  --green:             #16a34a;
+  --red:               #dc2626;
+  --divider:           rgba(0,0,0,0.07);
+  --shimmer:           rgba(0,0,0,0.03);
+
+  /* Nav */
+  --nav-hover-bg:      rgba(0, 0, 0, 0.04);
+  --nav-hover-border:  rgba(0, 0, 0, 0.08);
+  --nav-hover-color:   rgba(0, 0, 0, 0.75);
+  --online-border:     #ffffff;
+
+  /* Dashboard – grid / orbs (subtle in light mode) */
+  --grid-line:         rgba(59,130,246,0.05);
+  --orb-blue:          rgba(59,130,246,0.05);
+  --orb-purple:        rgba(168,85,247,0.04);
+  --orb-pink:          rgba(236,72,153,0.03);
+
+  /* Dashboard – stat cards */
+  --stat-green-bg:     rgba(22,163,74,0.07);
+  --stat-green-border: rgba(22,163,74,0.18);
+  --stat-amber-bg:     rgba(245,158,11,0.07);
+  --stat-amber-border: rgba(245,158,11,0.18);
+  --stat-gray-bg:      rgba(100,116,139,0.06);
+  --stat-gray-border:  rgba(100,116,139,0.15);
+
+  /* Dashboard – panels */
+  --panel-bg:          #ffffff;
+  --panel-border:      rgba(0,0,0,0.09);
+  --panel-border-hover:rgba(0,0,0,0.18);
+  --panel-shadow:      0 4px 24px rgba(0,0,0,0.07);
+
+  /* Dashboard – category rows */
+  --cat-row-bg:        rgba(0,0,0,0.025);
+  --cat-row-hover:     rgba(79,110,247,0.05);
+  --cat-row-border:    rgba(0,0,0,0.07);
+
+  /* Dashboard – bar track */
+  --bar-track:         rgba(0,0,0,0.08);
+
+  /* Dashboard – badges */
+  --badge-red-bg:      rgba(220,38,38,0.08);
+  --badge-red-border:  rgba(220,38,38,0.18);
+
+  /* Dashboard – tag chip */
+  --tag-bg:            rgba(0,0,0,0.06);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── Layout ────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  padding: 28px 32px;
+  color: var(--text-primary);
+  background: var(--bg-main);
+  transition: background 0.3s ease;
+  min-height: 100vh;
+}
+
+/* ── Topbar ────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.topbar h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.topbar small {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.btn-primary {
+  padding: 11px 20px;
+  background: var(--accent);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(79, 110, 247, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(79, 110, 247, 0.45);
+}
+
+/* ── Summary Cards ─────────────────────────────────────── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
+  padding: 22px 20px;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.card:hover::before { opacity: 1; }
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border-color: var(--accent);
+}
+
+.card p {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--card-sub);
+  margin: 0 0 10px;
+}
+
+.card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--card-text);
+  margin: 0;
+}
+
+.green { color: var(--green) !important; }
+.red   { color: var(--red)   !important; }
+
+/* ── Auth Pages ────────────────────────────────────────── */
+.auth-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  color: #111827;
+  padding: 36px 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.auth-box h2 {
+  text-align: center;
+  margin: 0 0 24px;
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.auth-box input:focus { border-color: #4f6ef7; }
+
+.auth-box button[type='submit'] {
+  width: 100%;
+  padding: 13px;
+  background: #4f6ef7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+
+.auth-box button[type='submit']:hover { background: #3a57d4; }
+
+.auth-switch {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.auth-link-btn {
+  background: none;
+  border: none;
+  color: #4f6ef7;
+  cursor: pointer;
+  font-weight: 700;
+  margin-left: 6px;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.auth-link-btn:hover { text-decoration: underline; }
+
+.auth-message {
+  text-align: center;
+  margin-top: 12px;
+  color: #dc2626;
+  font-size: 14px;
+}
