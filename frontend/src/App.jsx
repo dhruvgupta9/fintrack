@@ -9,7 +9,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import './App.css'
 
-const API = 'http://localhost:5000/api/transactions'
+const API = `${import.meta.env.VITE_API_URL}/api/transactions`
 
 export default function App() {
   const [transactions, setTransactions] = useState([])

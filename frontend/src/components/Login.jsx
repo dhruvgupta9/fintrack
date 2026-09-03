@@ -15,7 +15,7 @@ function Login({ onLogin, goToSignup }) {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -30,7 +30,7 @@ function Login({ onLogin, goToSignup }) {
 
       onLogin(data.user)
     } catch (error) {
-      setMsg('Cannot connect to server. Make sure the backend is running on port 5000.')
+      setMsg('Cannot connect to server. Please try again later.')
     } finally {
       setLoading(false)
     }
@@ -86,5 +86,4 @@ function Login({ onLogin, goToSignup }) {
   )
 }
 
-// ✅ FIXED: was `export default login` (lowercase), which caused a crash
 export default Login

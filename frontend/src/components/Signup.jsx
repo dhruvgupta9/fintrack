@@ -16,7 +16,7 @@ function Signup({ goToLogin }) {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/signup', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -37,7 +37,7 @@ function Signup({ goToLogin }) {
       }, 1200)
     } catch (error) {
       setMsgType('error')
-      setMsg('Cannot connect to server. Make sure the backend is running on port 5000.')
+      setMsg('Cannot connect to server. Please try again later.')
     } finally {
       setLoading(false)
     }
